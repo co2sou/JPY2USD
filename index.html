@@ -19,27 +19,41 @@
         
         <div class="converter-card">
             <div class="input-section">
-                <label for="jpyAmount" id="inputLabel">輸入日元金額：</label>
+                <label id="inputLabel">輸入金額：</label>
+                <div class="currency-selector">
+                    <button class="currency-btn active" data-currency="USD">
+                        <span class="currency-symbol">$</span>
+                        <span class="currency-name" id="usdName">美元</span>
+                    </button>
+                    <button class="currency-btn" data-currency="JPY">
+                        <span class="currency-symbol">¥</span>
+                        <span class="currency-name" id="jpyName">日元</span>
+                    </button>
+                    <button class="currency-btn" data-currency="CNY">
+                        <span class="currency-symbol">¥</span>
+                        <span class="currency-name" id="cnyName">人民幣</span>
+                    </button>
+                </div>
                 <div class="input-wrapper">
-                    <span class="currency-symbol">¥</span>
-                    <input type="number" id="jpyAmount" placeholder="1000" min="0" step="0.01">
+                    <span class="currency-symbol" id="inputSymbol">$</span>
+                    <input type="number" id="amountInput" placeholder="100" min="0" step="0.01">
                 </div>
             </div>
-            
+
             <div class="results-section">
-                <div class="result-item">
-                    <label id="usdLabel">美元：</label>
+                <div class="result-item" id="result1">
+                    <label id="result1Label">日元：</label>
                     <div class="result-value">
-                        <span class="currency-symbol">$</span>
-                        <span id="usdAmount">0.00</span>
+                        <span class="currency-symbol" id="result1Symbol">¥</span>
+                        <span id="result1Amount">0.00</span>
                     </div>
                 </div>
-                
-                <div class="result-item">
-                    <label id="cnyLabel">人民幣：</label>
+
+                <div class="result-item" id="result2">
+                    <label id="result2Label">人民幣：</label>
                     <div class="result-value">
-                        <span class="currency-symbol">¥</span>
-                        <span id="cnyAmount">0.00</span>
+                        <span class="currency-symbol" id="result2Symbol">¥</span>
+                        <span id="result2Amount">0.00</span>
                     </div>
                 </div>
             </div>
