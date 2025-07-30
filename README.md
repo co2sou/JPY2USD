@@ -15,14 +15,14 @@
 
 ## 🚀 在線體驗
 
-訪問：[https://co2sou.github.io/JPY2USD/](https://co2sou.github.io/JPY2USD/)
+訪問：[https://co2sou.github.io/exchangeRates/](https://co2sou.github.io/exchangeRates/)
 
 ## 📦 本地運行
 
 1. 克隆倉庫：
 ```bash
-git clone https://github.com/co2sou/JPY2USD.git
-cd JPY2USD
+git clone https://github.com/co2sou/exchangeRates.git
+cd exchangeRates
 ```
 
 2. 直接用瀏覽器打開 `index.html` 文件即可使用
@@ -44,7 +44,7 @@ cd JPY2USD
 ## 🔧 文件結構
 
 ```
-JPY2USD/
+exchangeRates/
 ├── index.html              # 主頁面
 ├── style.css               # 樣式文件
 ├── script.js               # 核心邏輯

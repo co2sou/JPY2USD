@@ -11,10 +11,10 @@ REM 檢查是否已經添加遠程倉庫
 git remote | findstr origin >nul
 if errorlevel 1 (
     echo 添加遠程倉庫...
-    git remote add origin https://github.com/co2sou/JPY2USD.git
+    git remote add origin https://github.com/co2sou/exchangeRates.git
 ) else (
     echo 更新遠程倉庫URL...
-    git remote set-url origin https://github.com/co2sou/JPY2USD.git
+    git remote set-url origin https://github.com/co2sou/exchangeRates.git
 )
 
 REM 添加所有文件
@@ -23,7 +23,7 @@ git add .
 
 REM 提交更改
 echo 提交更改...
-git commit -m "Initial commit: JPY real-time currency converter with multi-language support"
+git commit -m "Initial commit: Multi-currency real-time exchange rate converter with multi-language support"
 
 REM 設置主分支
 echo 設置主分支...
@@ -36,7 +36,7 @@ git push -u origin main
 echo.
 echo 部署完成！
 echo 請前往 GitHub 倉庫設置頁面啟用 GitHub Pages
-echo 倉庫地址: https://github.com/co2sou/JPY2USD
-echo 設置完成後可通過以下地址訪問: https://co2sou.github.io/JPY2USD/
+echo 倉庫地址: https://github.com/co2sou/exchangeRates
+echo 設置完成後可通過以下地址訪問: https://co2sou.github.io/exchangeRates/
 echo.
 pause
