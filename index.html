@@ -29,6 +29,10 @@
                         <span class="currency-symbol">¥</span>
                         <span class="currency-name" id="jpyName">日元</span>
                     </button>
+                    <button class="currency-btn" data-currency="TWD">
+                        <span class="currency-symbol">NT$</span>
+                        <span class="currency-name" id="twdName">台幣</span>
+                    </button>
                     <button class="currency-btn" data-currency="CNY">
                         <span class="currency-symbol">¥</span>
                         <span class="currency-name" id="cnyName">人民幣</span>
@@ -50,10 +54,18 @@
                 </div>
 
                 <div class="result-item" id="result2">
-                    <label id="result2Label">人民幣：</label>
+                    <label id="result2Label">台幣：</label>
                     <div class="result-value">
-                        <span class="currency-symbol" id="result2Symbol">¥</span>
+                        <span class="currency-symbol" id="result2Symbol">NT$</span>
                         <span id="result2Amount">0.00</span>
+                    </div>
+                </div>
+
+                <div class="result-item" id="result3">
+                    <label id="result3Label">人民幣：</label>
+                    <div class="result-value">
+                        <span class="currency-symbol" id="result3Symbol">¥</span>
+                        <span id="result3Amount">0.00</span>
                     </div>
                 </div>
             </div>
@@ -61,12 +73,16 @@
             <div class="rate-info">
                 <div class="rate-display">
                     <div class="rate-item">
-                        <span>JPY → USD: </span>
-                        <span id="jpyToUsdRate">-</span>
+                        <span>USD → JPY: </span>
+                        <span id="usdToJpyRate">-</span>
                     </div>
                     <div class="rate-item">
-                        <span>JPY → CNY: </span>
-                        <span id="jpyToCnyRate">-</span>
+                        <span>USD → TWD: </span>
+                        <span id="usdToTwdRate">-</span>
+                    </div>
+                    <div class="rate-item">
+                        <span>USD → CNY: </span>
+                        <span id="usdToCnyRate">-</span>
                     </div>
                 </div>
                 <div class="update-time">

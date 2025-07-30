@@ -5,6 +5,7 @@ const translations = {
         inputLabel: '輸入金額：',
         usdName: '美元',
         jpyName: '日元',
+        twdName: '台幣',
         cnyName: '人民幣',
         rateText: '匯率更新時間：',
         loading: '正在獲取最新匯率...'
@@ -14,6 +15,7 @@ const translations = {
         inputLabel: 'Enter Amount:',
         usdName: 'USD',
         jpyName: 'JPY',
+        twdName: 'TWD',
         cnyName: 'CNY',
         rateText: 'Exchange Rate Updated:',
         loading: 'Fetching latest rates...'
@@ -23,6 +25,7 @@ const translations = {
         inputLabel: '金額を入力：',
         usdName: 'ドル',
         jpyName: '円',
+        twdName: '台湾ドル',
         cnyName: '人民元',
         rateText: '為替レート更新時間：',
         loading: '最新レートを取得中...'
@@ -33,6 +36,7 @@ const translations = {
 const currencies = {
     USD: { symbol: '$', name: 'USD' },
     JPY: { symbol: '¥', name: 'JPY' },
+    TWD: { symbol: 'NT$', name: 'TWD' },
     CNY: { symbol: '¥', name: 'CNY' }
 };
 
@@ -42,6 +46,7 @@ let currentCurrency = 'USD';  // 默认输入货币为美元
 let exchangeRates = {
     USD: 1,       // 基准货币
     JPY: 149.50,  // 備用匯率 1 USD = 149.50 JPY
+    TWD: 31.50,   // 備用匯率 1 USD = 31.50 TWD
     CNY: 7.25     // 備用匯率 1 USD = 7.25 CNY
 };
 let lastUpdateTime = '';
@@ -52,6 +57,7 @@ const elements = {
     inputLabel: document.getElementById('inputLabel'),
     usdName: document.getElementById('usdName'),
     jpyName: document.getElementById('jpyName'),
+    twdName: document.getElementById('twdName'),
     cnyName: document.getElementById('cnyName'),
     rateText: document.getElementById('rateText'),
     amountInput: document.getElementById('amountInput'),
@@ -62,8 +68,12 @@ const elements = {
     result2Label: document.getElementById('result2Label'),
     result2Symbol: document.getElementById('result2Symbol'),
     result2Amount: document.getElementById('result2Amount'),
-    jpyToUsdRate: document.getElementById('jpyToUsdRate'),
-    jpyToCnyRate: document.getElementById('jpyToCnyRate'),
+    result3Label: document.getElementById('result3Label'),
+    result3Symbol: document.getElementById('result3Symbol'),
+    result3Amount: document.getElementById('result3Amount'),
+    usdToJpyRate: document.getElementById('usdToJpyRate'),
+    usdToTwdRate: document.getElementById('usdToTwdRate'),
+    usdToCnyRate: document.getElementById('usdToCnyRate'),
     updateTime: document.getElementById('updateTime'),
     loading: document.getElementById('loading'),
     langBtns: document.querySelectorAll('.lang-btn'),
@@ -153,6 +163,9 @@ function updateCurrencyDisplay() {
 
     elements.result2Label.textContent = `${texts[otherCurrencies[1].toLowerCase() + 'Name']}：`;
     elements.result2Symbol.textContent = currencies[otherCurrencies[1]].symbol;
+
+    elements.result3Label.textContent = `${texts[otherCurrencies[2].toLowerCase() + 'Name']}：`;
+    elements.result3Symbol.textContent = currencies[otherCurrencies[2]].symbol;
 }
 
 function updateTexts() {
@@ -161,6 +174,7 @@ function updateTexts() {
     elements.inputLabel.textContent = texts.inputLabel;
     elements.usdName.textContent = texts.usdName;
     elements.jpyName.textContent = texts.jpyName;
+    elements.twdName.textContent = texts.twdName;
     elements.cnyName.textContent = texts.cnyName;
     elements.rateText.textContent = texts.rateText;
 
@@ -191,6 +205,7 @@ async function fetchExchangeRates() {
         if (data.rates) {
             exchangeRates.USD = 1;  // USD作为基准
             exchangeRates.JPY = data.rates.JPY;
+            exchangeRates.TWD = data.rates.TWD;
             exchangeRates.CNY = data.rates.CNY;
             lastUpdateTime = new Date().toLocaleString();
 
@@ -219,8 +234,9 @@ function showLoading(show) {
 
 // 更新匯率顯示
 function updateRateDisplay() {
-    elements.jpyToUsdRate.textContent = (1 / exchangeRates.JPY).toFixed(6);
-    elements.jpyToCnyRate.textContent = (exchangeRates.CNY / exchangeRates.JPY).toFixed(6);
+    elements.usdToJpyRate.textContent = exchangeRates.JPY.toFixed(2);
+    elements.usdToTwdRate.textContent = exchangeRates.TWD.toFixed(2);
+    elements.usdToCnyRate.textContent = exchangeRates.CNY.toFixed(2);
     elements.updateTime.textContent = lastUpdateTime;
 }
 
@@ -231,10 +247,11 @@ function calculateConversion() {
     if (inputValue === 0) {
         elements.result1Amount.textContent = '0.00';
         elements.result2Amount.textContent = '0.00';
+        elements.result3Amount.textContent = '0.00';
         return;
     }
 
-    // 获取其他两种货币
+    // 获取其他三种货币
     const otherCurrencies = Object.keys(currencies).filter(c => c !== currentCurrency);
 
     // 将输入金额转换为USD基准
@@ -248,12 +265,14 @@ function calculateConversion() {
     // 转换为目标货币
     const result1Value = otherCurrencies[0] === 'USD' ? usdValue : usdValue * exchangeRates[otherCurrencies[0]];
     const result2Value = otherCurrencies[1] === 'USD' ? usdValue : usdValue * exchangeRates[otherCurrencies[1]];
+    const result3Value = otherCurrencies[2] === 'USD' ? usdValue : usdValue * exchangeRates[otherCurrencies[2]];
 
     // 显示结果，根据货币类型决定小数位数
     const getDecimalPlaces = (currency) => currency === 'JPY' ? 0 : 2;
 
     elements.result1Amount.textContent = result1Value.toFixed(getDecimalPlaces(otherCurrencies[0]));
     elements.result2Amount.textContent = result2Value.toFixed(getDecimalPlaces(otherCurrencies[1]));
+    elements.result3Amount.textContent = result3Value.toFixed(getDecimalPlaces(otherCurrencies[2]));
 }
 
 // 錯誤處理
