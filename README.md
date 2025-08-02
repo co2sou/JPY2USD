@@ -15,13 +15,13 @@
 
 ## 🚀 在線體驗
 
-訪問：[https://co2sou.github.io/exchangeRates/](https://co2sou.github.io/exchangeRates/)
+訪問：[https://xiaonaofua.github.io/exchangeRates/](https://xiaonaofua.github.io/exchangeRates/)
 
 ## 📦 本地運行
 
 1. 克隆倉庫：
 ```bash
-git clone https://github.com/co2sou/exchangeRates.git
+git clone https://github.com/xiaonaofua/exchangeRates.git
 cd exchangeRates
 ```
 
