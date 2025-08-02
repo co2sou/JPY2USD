@@ -246,38 +246,226 @@ body {
 }
 
 /* 響應式設計 */
-@media (max-width: 600px) {
+
+/* Tablet optimizations (iPad) */
+@media (max-width: 1024px) and (min-width: 601px) {
+    .container {
+        max-width: 600px;
+    }
+    
     .header h1 {
-        font-size: 2rem;
+        font-size: 2.2rem;
     }
     
     .converter-card {
-        padding: 20px;
+        padding: 35px;
+    }
+    
+    .currency-selector {
+        gap: 12px;
+    }
+    
+    .currency-btn {
+        min-width: 90px;
+        padding: 15px 20px;
+    }
+    
+    .currency-btn .currency-symbol {
+        font-size: 22px;
+    }
+    
+    #amountInput {
+        font-size: 20px;
+        padding: 18px 18px 18px 65px;
+    }
+    
+    .result-value {
+        font-size: 22px;
     }
     
     .rate-display {
-        flex-direction: column;
-        gap: 10px;
+        gap: 15px;
+    }
+    
+    .rate-item {
+        font-size: 14px;
+        min-width: 140px;
+    }
+}
+
+/* Mobile optimizations */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+    
+    .container {
+        max-width: 100%;
+    }
+    
+    .header h1 {
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+    }
+    
+    .converter-card {
+        padding: 20px 15px;
+        border-radius: 15px;
     }
     
     .language-selector {
         flex-wrap: wrap;
+        gap: 8px;
+    }
+    
+    .lang-btn {
+        padding: 10px 14px;
+        font-size: 13px;
+        border-radius: 15px;
     }
 
     .currency-selector {
-        flex-direction: column;
         gap: 8px;
+        margin-bottom: 20px;
     }
 
     .currency-btn {
         flex-direction: row;
         justify-content: center;
-        padding: 12px 15px;
+        align-items: center;
+        padding: 15px 12px;
         min-width: auto;
+        flex: 1;
+        min-height: 50px;
+        border-radius: 10px;
     }
 
     .currency-btn .currency-symbol {
         margin-bottom: 0;
-        margin-right: 8px;
+        margin-right: 6px;
+        font-size: 18px;
+    }
+    
+    .currency-btn .currency-name {
+        font-size: 11px;
+    }
+    
+    .input-wrapper .currency-symbol {
+        left: 12px;
+        font-size: 16px;
+    }
+    
+    #amountInput {
+        padding: 18px 15px 18px 45px;
+        font-size: 18px;
+        border-radius: 8px;
+    }
+    
+    .result-item {
+        padding: 18px 0;
+    }
+    
+    .result-item label {
+        font-size: 15px;
+    }
+    
+    .result-value {
+        font-size: 18px;
+    }
+    
+    .rate-info {
+        padding: 15px;
+        border-radius: 8px;
+    }
+    
+    .rate-display {
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 12px;
+    }
+    
+    .rate-item {
+        font-size: 12px;
+        min-width: auto;
+        text-align: left;
+        padding: 5px 0;
+        border-bottom: 1px solid #e0e0e0;
+    }
+    
+    .rate-item:last-child {
+        border-bottom: none;
+    }
+    
+    .update-time {
+        font-size: 11px;
+    }
+}
+
+/* Small mobile phones */
+@media (max-width: 375px) {
+    .header h1 {
+        font-size: 1.6rem;
+    }
+    
+    .converter-card {
+        padding: 15px 12px;
+    }
+    
+    .currency-btn {
+        padding: 12px 8px;
+        min-height: 45px;
+    }
+    
+    .currency-btn .currency-symbol {
+        font-size: 16px;
+        margin-right: 4px;
+    }
+    
+    .currency-btn .currency-name {
+        font-size: 10px;
+    }
+    
+    #amountInput {
+        padding: 15px 12px 15px 40px;
+        font-size: 16px;
+    }
+    
+    .input-wrapper .currency-symbol {
+        left: 10px;
+        font-size: 14px;
+    }
+    
+    .result-value {
+        font-size: 16px;
+    }
+    
+    .lang-btn {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+}
+
+/* Touch-friendly enhancements */
+@media (hover: none) and (pointer: coarse) {
+    .currency-btn {
+        min-height: 48px;
+    }
+    
+    .lang-btn {
+        min-height: 44px;
+    }
+    
+    #amountInput {
+        min-height: 48px;
+    }
+    
+    .currency-btn:active {
+        transform: scale(0.98);
+        transition: transform 0.1s ease;
+    }
+    
+    .lang-btn:active {
+        transform: scale(0.95);
+        transition: transform 0.1s ease;
     }
 }
